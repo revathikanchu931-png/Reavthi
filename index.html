@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner-friendly IPv4, subnetting, CIDR and IPv6 learning calculator.">
+  <title>IP Addressing &amp; Subnetting Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="home">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="IP Lab home"><span class="brand-mark">IP</span><span>IP Addressing<span class="brand-subtitle">Computer Networks · Unit III</span></span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#ipv4-validator">IPv4 Validator</a><a href="#subnet-calculator">Subnet Calculator</a><a href="#cidr-calculator">CIDR Calculator</a><a href="#ipv6-validator">IPv6 Validator</a><a href="#learn">Learn About IP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy"><p class="eyebrow">BH23 CSE (AI&amp;ML) · UNIT III</p><h1>Understand your network,<br><span>one address at a time.</span></h1><p class="hero-lede">Explore IPv4, subnetting, CIDR and IPv6 with clear, instant calculations. A practical learning companion for Computer Networks.</p><a class="button button-primary" href="#subnet-calculator">Start calculating <span aria-hidden="true">→</span></a></div>
+      <div class="hero-visual" aria-label="Illustration of a network connecting devices"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="node node-main">IPv4<br><small>192.168.1.0/24</small></div><div class="node node-a">PC</div><div class="node node-b">↗</div><div class="node node-c">WEB</div><div class="connector connector-a"></div><div class="connector connector-b"></div><div class="connector connector-c"></div></div>
+    </section>
+
+    <section class="wrap section-block" id="ipv4-validator"><div class="section-heading"><div><p class="eyebrow">01 · VALIDATION</p><h2>IPv4 address validator</h2><p>Check that an address has four valid octets, each between 0 and 255.</p></div><span class="section-icon">✓</span></div>
+      <div class="card validator-card"><form id="ipv4-form" class="inline-form"><label class="field grow">IPv4 address<input id="ipv4-input" type="text" placeholder="e.g. 192.168.1.10" autocomplete="off" spellcheck="false" required></label><div class="button-row"><button class="button button-primary" type="submit">Validate address</button><button class="button button-quiet" type="reset">Reset</button></div></form><div id="ipv4-result" class="message-slot" aria-live="polite"></div></div>
+    </section>
+
+    <section class="wrap section-block" id="subnet-calculator"><div class="section-heading"><div><p class="eyebrow">02 · SUBNETTING</p><h2>Subnet mask calculator</h2><p>Find network boundaries, host range and masks from an address and prefix.</p></div><span class="section-icon">⌘</span></div>
+      <div class="card"><form id="subnet-form" class="form-grid"><label class="field">IPv4 address<input id="subnet-ip" type="text" placeholder="192.168.1.10" autocomplete="off" spellcheck="false" required></label><label class="field">CIDR prefix <span class="field-hint">0–32</span><div class="prefix-input"><span>/</span><input id="subnet-prefix" type="number" min="0" max="32" placeholder="24" required></div></label><div class="button-row form-actions"><button class="button button-primary" type="submit">Calculate subnet</button><button class="button button-quiet" type="reset">Reset</button></div></form><div id="subnet-result" aria-live="polite"></div></div>
+    </section>
+
+    <section class="wrap section-block" id="cidr-calculator"><div class="section-heading"><div><p class="eyebrow">03 · CIDR</p><h2>CIDR calculator</h2><p>Enter an address with its prefix in one compact notation.</p></div><span class="section-icon">/</span></div>
+      <div class="card"><form id="cidr-form" class="inline-form"><label class="field grow">CIDR notation<input id="cidr-input" type="text" placeholder="e.g. 192.168.1.10/24" autocomplete="off" spellcheck="false" required></label><div class="button-row"><button class="button button-primary" type="submit">Calculate CIDR</button><button class="button button-quiet" type="reset">Reset</button></div></form><div id="cidr-result" aria-live="polite"></div></div>
+    </section>
+
+    <section class="wrap section-block" id="ipv6-validator"><div class="section-heading"><div><p class="eyebrow">04 · NEXT-GENERATION IP</p><h2>IPv6 address validator</h2><p>Validate full or compressed IPv6 notation, including embedded IPv4 forms.</p></div><span class="section-icon">6</span></div>
+      <div class="card"><form id="ipv6-form" class="inline-form"><label class="field grow">IPv6 address<input id="ipv6-input" type="text" placeholder="e.g. 2001:db8::1" autocomplete="off" spellcheck="false" required></label><div class="button-row"><button class="button button-primary" type="submit">Validate IPv6</button><button class="button button-quiet" type="reset">Reset</button></div></form><div id="ipv6-result" class="message-slot" aria-live="polite"></div><p class="inline-note"><strong>What is IPv6?</strong> IPv6 uses 128-bit addresses written as eight hexadecimal groups. The <code>::</code> notation compresses one or more consecutive zero groups.</p></div>
+    </section>
+
+    <section class="wrap section-block learn-section" id="learn"><div class="section-heading"><div><p class="eyebrow">05 · QUICK REFERENCE</p><h2>Learn about IP addressing</h2><p>Key ranges and concepts to help make sense of your results.</p></div></div>
+      <div class="info-grid">
+        <article class="info-card"><div class="info-card-head"><span class="mini-icon">⌂</span><h3>Private IPv4 ranges</h3></div><p>These ranges are for local networks and are not routed on the public internet.</p><ul class="range-list"><li><code>10.0.0.0/8</code><span>10.0.0.0 – 10.255.255.255</span></li><li><code>172.16.0.0/12</code><span>172.16.0.0 – 172.31.255.255</span></li><li><code>192.168.0.0/16</code><span>192.168.0.0 – 192.168.255.255</span></li></ul></article>
+        <article class="info-card"><div class="info-card-head"><span class="mini-icon">#</span><h3>Classful IPv4 ranges</h3></div><p>Legacy classes group addresses by their leading bits. Modern networks use CIDR.</p><ul class="range-list"><li><code>Class A</code><span>1.0.0.0 – 126.255.255.255</span></li><li><code>Class B</code><span>128.0.0.0 – 191.255.255.255</span></li><li><code>Class C</code><span>192.0.0.0 – 223.255.255.255</span></li><li><code>Class D</code><span>224.0.0.0 – 239.255.255.255 · multicast</span></li><li><code>Class E</code><span>240.0.0.0 – 255.255.255.255 · reserved</span></li></ul></article>
+        <article class="info-card"><div class="info-card-head"><span class="mini-icon">↻</span><h3>Special addresses</h3></div><p><strong>Loopback:</strong> 127.0.0.0/8 sends traffic back to the local device; 127.0.0.1 is commonly used.</p><p><strong>Network address:</strong> identifies the subnet and has all host bits set to 0.</p><p><strong>Broadcast address:</strong> reaches all hosts in an IPv4 subnet and has all host bits set to 1.</p></article>
+        <article class="info-card comparison-card"><div class="info-card-head"><span class="mini-icon">⇄</span><h3>IPv4 versus IPv6</h3></div><div class="comparison"><div><span class="compare-label">IPv4</span><strong>32-bit</strong><p>About 4.3 billion addresses; dotted decimal, e.g. 192.168.1.10</p></div><div><span class="compare-label">IPv6</span><strong>128-bit</strong><p>A vastly larger address space; hexadecimal groups, e.g. 2001:db8::1</p></div></div></article>
+      </div>
+    </section>
+    <section class="wrap takeaway"><span class="takeaway-mark">i</span><p><strong>Remember:</strong> for /31 point-to-point links, both addresses are usable as endpoints. A /32 represents one address, so conventional network and broadcast host rules do not apply.</p></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><span>IP Addressing &amp; Subnetting Calculator</span><span>Computer Networks · BH23 CSE (AI&amp;ML) · Unit III</span><span>Built with HTML, CSS &amp; JavaScript</span></div></footer>
+</body>
+</html>
